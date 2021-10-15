@@ -14,9 +14,10 @@ if __name__ == '__main__':
     print_hi('PyCharm')
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
-lsta=[1,2,3]
+lsta=[[1,2,3]]
 lst2da=[[1,2,3,4],[5,6,7,8]]
 a=np.array(lsta)
 b=np.array(lst2da)
 
 print(np.random.randint(3))
+print(np.repeat(lsta,3,axis=1))
