@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>US Passport Photo Sheet Generator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="wrapper">
+        <h1>US Passport Photo Sheet Generator</h1>
+        <p>
+          Upload a selfie, adjust the crop, and create a <strong>4&quot; x 6&quot;</strong>
+          portrait sheet containing six <strong>2&quot; x 2&quot;</strong> passport photos. The
+          result is printable at <strong>300&nbsp;DPI</strong> as a high-quality JPEG.
+        </p>
+      </div>
+    </header>
+
+    <main class="wrapper">
+      <section class="panel">
+        <div class="panel-header">
+          <h2>1. Upload your photo</h2>
+          <label class="file-input">
+            <input type="file" id="file-input" accept="image/*" />
+            <span>Select Image</span>
+          </label>
+        </div>
+        <ul class="tips">
+          <li>Use a recent color photo taken in the last six months.</li>
+          <li>Pose facing the camera with a neutral expression and open eyes.</li>
+          <li>Ensure the background is plain white or off-white.</li>
+          <li>
+            Remove glasses, hats, and uniforms unless worn for religious purposes.
+          </li>
+        </ul>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2>2. Adjust crop &amp; alignment</h2>
+          <p>Fine tune the face position to meet the required head size.</p>
+        </div>
+        <div class="preview-grid">
+          <canvas id="preview-canvas" width="600" height="600" aria-label="2x2 passport preview"></canvas>
+          <div class="controls">
+            <label>
+              Zoom (head should be 1" to 1.375" tall)
+              <input type="range" id="scale" min="1" max="3" step="0.01" value="1.1" />
+            </label>
+            <label>
+              Vertical position
+              <input type="range" id="offset-y" min="-40" max="40" value="0" />
+            </label>
+            <label>
+              Horizontal position
+              <input type="range" id="offset-x" min="-40" max="40" value="0" />
+            </label>
+            <label>
+              Exposure correction
+              <input type="range" id="exposure" min="-40" max="40" value="0" />
+            </label>
+          </div>
+        </div>
+        <p class="note">
+          The gray guides show the safe zone for crown and chin per the official
+          specification (eye level between 1.125&quot; and 1.375&quot; from the bottom).
+        </p>
+      </section>
+
+      <section class="panel">
+        <div class="panel-header">
+          <h2>3. Generate &amp; download</h2>
+          <p>Creates a printable 4x6 layout with six aligned passport photos.</p>
+        </div>
+        <div class="actions">
+          <button id="generate" disabled>Generate 4x6 Sheet</button>
+          <button id="download" disabled>Download JPEG</button>
+        </div>
+        <canvas id="final-canvas" width="1200" height="1800" aria-hidden="true"></canvas>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrapper">
+        <p>
+          This tool follows the published photo requirements from the United States
+          Department of State but cannot validate biometric details. Carefully review the
+          generated sheet before printing.
+        </p>
+      </div>
+    </footer>
+
+    <script src="script.js" type="module"></script>
+  </body>
+</html>
